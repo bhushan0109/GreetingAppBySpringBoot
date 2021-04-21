@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.model.Greeting;
 import com.model.User;
+
 public interface IGreetingService {
 
 	Greeting addGreeting(User user);

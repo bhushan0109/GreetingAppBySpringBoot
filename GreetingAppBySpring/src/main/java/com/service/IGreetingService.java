@@ -1,6 +1,9 @@
 package com.service;
 
-public interface IGreetingService {
-	public String greet();
+import com.model.Greeting;
+import com.model.User;
 
+public interface IGreetingService {
+
+	public Greeting addGreeting(User user);
 }

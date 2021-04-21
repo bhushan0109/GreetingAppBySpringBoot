@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -29,6 +31,26 @@ public class GreetingService implements IGreetingService {
 	public Optional<Greeting> getGreetingById(long id) {
 		Optional<Greeting> greeting = greetingRepository.findById(id);
 		return greeting;
+	}
+
+	@Override
+	public List<Greeting> getAllGreetings() {
+		List<Greeting> greetings = new ArrayList<>();
+		greetingRepository.findAll().forEach(greeting -> greetings.add(greeting));
+		return greetings;
+	}
+
+	@Override
+	public Optional<Greeting> editGreetingById(long id, String name) {
+		Optional<Greeting> particularGreeting = greetingRepository.findById(id);
+		particularGreeting.get().setMessage(name);
+		return particularGreeting;
+	}
+
+	@Override
+	public String deleteGreeting(long id) {
+		greetingRepository.deleteById(id);
+		return "Greeting Deleted Succesfully";
 	}
 
 }
